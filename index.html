@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMAR EL-DESOUKI | Creative Motion & Video Editor Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0b0713',
+                        premiumPurp: '#a855f7',
+                        premiumIndigo: '#6366f1',
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #0b0713;
+            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+        }
+
+        /* شبكة الخلفية الهندسية الفاخرة */
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(168, 85, 247, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(168, 85, 247, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* توهج للنص الافتتاحي الرئيسي */
+        .hero-glow-text {
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.55), 0 0 40px rgba(99, 102, 241, 0.3);
+        }
+
+        /* توهج ديناميكي ينبض وينير باستمرار لاسم عمر الدسوقي */
+        .hero-name-glow {
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.85), 0 0 20px rgba(99, 102, 241, 0.6);
+            animation: glowPulse 2.5s infinite ease-in-out;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow: 0 0 8px rgba(168, 85, 247, 0.8), 0 0 18px rgba(99, 102, 241, 0.5);
+                opacity: 0.9;
+            }
+            50% {
+                text-shadow: 0 0 22px rgba(168, 85, 247, 1), 0 0 38px rgba(99, 102, 241, 0.85);
+                opacity: 1;
+            }
+        }
+
+        /* التأثير الزجاجي الفاخر */
+        .glass-card {
+            background: rgba(15, 10, 25, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+        }
+
+        /* مؤشر الماوس المخصص */
+        .custom-cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #a855f7;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 10000;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .custom-cursor-ring {
+            width: 32px;
+            height: 32px;
+            border: 1.5px solid rgba(168, 85, 247, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, border-color 0.2s;
+        }
+
+        /* أنميشن متوهج متحرك لإطار الصورة الشخصية */
+        @keyframes borderGlowPulse {
+            0%, 100% {
+                border-color: rgba(168, 85, 247, 0.4);
+                box-shadow: 0 0 15px rgba(168, 85, 247, 0.3), inset 0 0 15px rgba(168, 85, 247, 0.1);
+            }
+            50% {
+                border-color: rgba(99, 102, 241, 0.8);
+                box-shadow: 0 0 30px rgba(99, 102, 241, 0.6), inset 0 0 25px rgba(99, 102, 241, 0.2);
+            }
+        }
+        .animated-glow-border {
+            animation: borderGlowPulse 4s infinite ease-in-out;
+        }
+
+        /* تخصيص مسارات الدوران الأفقي اللانهائية */
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .marquee-track {
+            display: flex;
+            gap: 0px;
+            width: max-content;
+        }
+
+        /* تخصيص شريط التمرير */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0713;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a855f7;
+            border-radius: 4px;
+        }
+
+        /* حماية الاستجابة ومنع تشوهات العرض على الموبايل والشاشات اللمسية */
+        @media (max-width: 1024px) {
+            .custom-cursor-dot, .custom-cursor-ring {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="text-white selection:bg-purple-600 selection:text-white antialiased overflow-x-hidden">
+
+    <!-- مؤشر الماوس المخصص (للديسكتوب فقط) -->
+    <div class="custom-cursor-dot hidden lg:block" id="cursorDot"></div>
+    <div class="custom-cursor-ring hidden lg:block" id="cursorRing"></div>
+
+    <!-- شبكة وكرات التوهج بالخلفية -->
+    <div class="fixed inset-0 grid-bg z-[-2] pointer-events-none"></div>
+    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-premiumPurp/10 blur-[130px] z-[-1] pointer-events-none animate-pulse"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-premiumIndigo/10 blur-[130px] z-[-1] pointer-events-none"></div>
+
+    <!-- مشغل الموسيقى الخلفية التلقائي مجهز للتكرار التلقائي والتشغيل الفوري -->
+    <audio id="music" loop autoplay preload="auto">
+        <source src="music.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- شريط التنقل العلوي متجاوب بالكامل ومعزز بقائمة للهواتف -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-card border-none border-b border-white/5 py-3 px-4 md:px-12 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-2">
+            <!-- الشعار -->
+            <div class="text-lg md:text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-premiumPurp to-premiumIndigo truncate">
+                OMAR EL-DESOUKI
+            </div>
+            
+            <!-- قائمة التنقل للديسكتوب فقط -->
+            <nav class="hidden lg:flex items-center space-x-1 space-x-reverse text-sm font-medium">
+                <a href="#hero" class="hover:text-premiumPurp px-3 py-2 transition-colors">الرئيسية</a>
+                <a href="#about" class="hover:text-premiumPurp px-3 py-2 transition-colors">عنّي</a>
+                <a href="#gallery" class="hover:text-premiumPurp px-3 py-2 transition-colors">معرض الأعمال</a>
+                <a href="#testimonials" class="hover:text-premiumPurp px-3 py-2 transition-colors">آراء العملاء</a>
+                <a href="#before-after" class="hover:text-premiumPurp px-3 py-2 transition-colors">قبل وبعد</a>
+                <a href="#workflow" class="hover:text-premiumPurp px-3 py-2 transition-colors">خطوات العمل</a>
+                <a href="#contact" class="hover:text-premiumPurp px-3 py-2 transition-colors">تواصل معي</a>
+            </nav>
+
+            <!-- زر التواصل وقائمة الجوال -->
+            <div class="flex items-center gap-3">
+                <a href="#contact" class="magnetic bg-gradient-to-r from-premiumPurp to-premiumIndigo text-white text-xs md:text-sm font-bold px-4 md:px-6 py-2 rounded-full shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all duration-300 whitespace-nowrap">
+                    ابدأ مشروعك
+                </a>
+                
+                <!-- زر التحكم بقائمة الهواتف المحمولة -->
+                <button id="mobileMenuTrigger" class="lg:hidden text-white hover:text-premiumPurp transition-colors p-2 focus:outline-none" aria-label="Toggle mobile menu">
+                    <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- القائمة المنسدلة للهواتف والتابلت -->
+        <div id="mobileMenu" class="hidden lg:hidden flex flex-col space-y-3 pt-4 pb-2 border-t border-white/5 mt-3 text-sm font-medium transition-all duration-300">
+            <a href="#hero" class="mobile-link hover:text-premiumPurp py-1 transition-colors">الرئيسية</a>
+            <a href="#about" class="mobile-link hover:text-premiumPurp py-1 transition-colors">عنّي</a>
+            <a href="#gallery" class="mobile-link hover:text-premiumPurp py-1 transition-colors">معرض الأعمال</a>
+            <a href="#testimonials" class="mobile-link hover:text-premiumPurp py-1 transition-colors">آراء العملاء</a>
+            <a href="#before-after" class="mobile-link hover:text-premiumPurp py-1 transition-colors">قبل وبعد</a>
+            <a href="#workflow" class="mobile-link hover:text-premiumPurp py-1 transition-colors">خطوات العمل</a>
+            <a href="#contact" class="mobile-link hover:text-premiumPurp py-1 transition-colors">تواصل معي</a>
+        </div>
+    </header>
+
+    <main class="pt-24">
+        
+        <!-- الصفحة 1: الواجهة الرئيسية (Hero Section) -->
+        <section id="hero" class="min-h-screen flex flex-col justify-center items-center px-4 md:px-6 relative overflow-hidden">
+            <div class="text-center z-10 max-w-4xl flex flex-col items-center justify-center">
+                <span class="inline-block glass-card text-xs md:text-sm text-premiumPurp font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest border border-purple-500/20">
+                    <i class="fa-solid fa-wand-magic-sparkles ml-1"></i> سينماتية الحركة والمونتاج
+                </span>
+                
+                <h1 class="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight tracking-tight hero-glow-text">
+                    Don’t just tell your story.<br class="hidden md:inline">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-premiumPurp via-indigo-400 to-premiumIndigo">
+                        Make it move.
+                    </span>
+                </h1>
+                
+                <p class="text-gray-400 text-sm sm:text-base md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                    نصنع من المشاهد العادية تجربة بصرية سينمائية استثنائية. دمج دقيق لفيزياء التحريك، المونتاج الاحترافي، والتلوين المبهر.
+                </p>
+
+                <!-- زر تفاعلي متوهج ومضيء منسق السطور ومجهز للانتقال البطيء وتشغيل الموسيقى فورا -->
+                <div class="w-full flex justify-center items-center">
+                    <button id="heroCTA" class="magnetic relative px-10 py-5 bg-gradient-to-r from-premiumPurp to-premiumIndigo rounded-2xl font-bold shadow-lg shadow-purple-500/30 hover:scale-105 transition-all duration-300 overflow-hidden flex flex-col items-center justify-center gap-1 group">
+                        <span class="text-gray-300 text-xs tracking-wider uppercase font-bold font-cairo">مين هو</span>
+                        <span class="text-xl sm:text-2xl md:text-3xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-white hero-name-glow">
+                            omar el desoky
+                        </span>
+                        <!-- تأثير لمعان مائل يتحرك عند وقوف الماوس -->
+                        <div class="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 translate-x-[-150%] group-hover:translate-x-[250%] transition-transform duration-1000 ease-in-out"></div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- الصفحة 2: من أنا والخبرات (About & Expertise) -->
+        <section id="about" class="py-32 px-4 md:px-6 max-w-7xl mx-auto relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- صورة عمر الشخصية الطولية -->
+                <div class="lg:col-span-5 flex justify-center relative">
+                    <div class="relative w-[240px] sm:w-[280px] aspect-[9/16] group">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-premiumPurp to-premiumIndigo rounded-3xl blur-2xl opacity-40 group-hover:opacity-70 transition-opacity duration-500"></div>
+                        <!-- إطار الصورة الطولي المضيء -->
+                        <div class="absolute inset-0 glass-card animated-glow-border rounded-3xl p-3 flex items-center justify-center overflow-hidden z-10">
+                            <div class="w-full h-full rounded-2xl bg-darkBg border border-white/5 relative overflow-hidden">
+                                <img src="p1.jpg" alt="Omar El-Desouki" class="w-full h-full object-cover rounded-xl">
+                                <div class="absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 animate-pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- النبذة المهنية بالاسم الإنجليزي والعدادات الصاعدة -->
+                <div class="lg:col-span-7 space-y-8">
+                    <div>
+                        <span class="text-premiumPurp text-xs sm:text-sm font-bold uppercase tracking-wider block mb-2">// خلف العدسة والتحريك الشغوف</span>
+                        <h2 class="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-4">OMAR EL-DESOUKI</h2>
+                        <p class="text-gray-300 leading-relaxed text-sm sm:text-base md:text-lg">
+                            محرر ومصمم حركة محترف، أهتم بدراسة فيزياء وعلم التحريك لخلق مقاطع بصرية آسرة ذات طابع فيزيائي ارتدائي ممتع. متخصص في المونتاج السينمائي، تصحيح الألوان، وتصميم المؤثرات البصرية التي تجعل قصتك تترك انطباعاً حقيقياً في عقل وقلب المشاهد.
+                        </p>
+                    </div>
+
+                    <!-- برامج العمل والمهارات -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <div class="glass-card p-4 rounded-xl flex items-center space-x-3 space-x-reverse border border-[#a855f7]/20 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all">
+                            <div class="w-10 h-10 rounded-lg bg-purple-950/50 flex items-center justify-center text-xl text-purple-400 font-bold">Ae</div>
+                            <div>
+                                <h4 class="text-xs sm:text-sm font-bold">After Effects</h4>
+                                <span class="text-[10px] text-gray-400">التحريك الفيزيائي</span>
+                            </div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl flex items-center space-x-3 space-x-reverse border border-[#6366f1]/20 hover:shadow-[0_0_15px_rgba(99,102,241,0.3)] transition-all">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-950/50 flex items-center justify-center text-xl text-indigo-400 font-bold">Pr</div>
+                            <div>
+                                <h4 class="text-xs sm:text-sm font-bold">Premiere Pro</h4>
+                                <span class="text-[10px] text-gray-400">المونتاج والإيقاع</span>
+                            </div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl flex items-center space-x-3 space-x-reverse border border-teal-500/20 hover:shadow-[0_0_15px_rgba(20,184,166,0.3)] transition-all">
+                            <div class="w-10 h-10 rounded-lg bg-teal-950/50 flex items-center justify-center text-xl text-teal-400 font-bold">Da</div>
+                            <div>
+                                <h4 class="text-xs sm:text-sm font-bold">Resolve</h4>
+                                <span class="text-[10px] text-gray-400">تلوين سينمائي</span>
+                            </div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl flex items-center space-x-3 space-x-reverse border border-orange-500/20 hover:shadow-[0_0_15px_rgba(249,115,22,0.3)] transition-all">
+                            <div class="w-10 h-10 rounded-lg bg-orange-950/50 flex items-center justify-center text-xl text-orange-400 font-bold"><i class="fa-solid fa-camera"></i></div>
+                            <div>
+                                <h4 class="text-xs sm:text-sm font-bold">Filming</h4>
+                                <span class="text-[10px] text-gray-400">صناعة المحتوى</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- العدادات الصاعدة -->
+                    <div class="grid grid-cols-2 gap-6 pt-6 border-t border-white/10">
+                        <div>
+                            <div class="text-3xl sm:text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-premiumPurp to-indigo-400 flex items-center">
+                                <span>+</span><span class="counter" data-target="3">0</span>
+                            </div>
+                            <p class="text-gray-400 text-xs sm:text-sm mt-2 font-bold">سنوات من الخبرة العملية المكثفة</p>
+                        </div>
+                        <div>
+                            <div class="text-3xl sm:text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-premiumPurp to-indigo-400 flex items-center">
+                                <span>+</span><span class="counter" data-target="200">0</span>
+                            </div>
+                            <p class="text-gray-400 text-xs sm:text-sm mt-2 font-bold">عميل راضٍ في الشرق الأوسط</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- الصفحة 3: معرض أعمال omar el desoky (فيديوهات مخفضة ومحسنة مع دمج المسارات) -->
+        <section id="gallery" class="py-32 px-4 md:px-6 bg-black/40 overflow-hidden relative">
+            <div class="max-w-7xl mx-auto text-center mb-16">
+                <span class="text-premiumPurp text-sm font-bold uppercase tracking-wider block mb-2">// العرض التفاعلي والانسيابي</span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black uppercase">جزء من أعمال omar el desoky</h2>
+                <p class="text-gray-400 max-w-xl mx-auto mt-4 text-xs sm:text-sm md:text-base">
+                    مسارات منزلقة منتظمة للفيديوهات جاهزة للعرض. قف على أي فيديو لتفعيل الصوت مباشرة وخفض موسيقى الموقع ببطء، دون توقف المشهد نهائياً.
+                </p>
+
+                <!-- أزرار التصفية والفرز للتنقل من الدوار للمسطح (تم دمج الطبي في التسويق) -->
+                <div class="flex flex-wrap gap-2 justify-center mt-8 inline-flex glass-card p-2 rounded-2xl border border-white/5">
+                    <button class="filter-btn active px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-premiumPurp text-white" data-filter="all">الكل (المسارات المتحركة)</button>
+                    <button class="filter-btn px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-400 hover:text-white" data-filter="marketing">التسويق</button>
+                    <button class="filter-btn px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-400 hover:text-white" data-filter="motion">motion</button>
+                    <button class="filter-btn px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-400 hover:text-white" data-filter="products">المنتجات</button>
+                    <button class="filter-btn px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-400 hover:text-white" data-filter="edu">التعليمي</button>
+                </div>
+            </div>
+
+            <!-- عرض المسارات الدوارة الأفقية المعكوسة تماماً وبدون فراغات (تمت تصفيتها ودعم WebM وصور Poster) -->
+            <div id="cylinderContainers" class="space-y-2 py-8 block">
+                <!-- المسار الأول (يتحرك لليمين تلقائياً) -->
+                <div class="marquee-container py-12" id="marqueeContainer1">
+                    <div class="marquee-track" id="track1">
+                        <!-- فيديو t3 (تسويق) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="marketing">
+                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="t3-poster.webp">
+                                    <source src="t3.webm" type="video/webm">
+                                    <source src="t3.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-premiumPurp">التسويق</span>
+                            </div>
+                        </div>
+                        <!-- فيديو m1 (motion) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="motion">
+                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="m1-poster.webp">
+                                    <source src="m1.webm" type="video/webm">
+                                    <source src="m1.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-indigo-400">Motion</span>
+                            </div>
+                        </div>
+                        <!-- فيديو a1 (التعليمي) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="edu">
+                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="a1-poster.webp">
+                                    <source src="a1.webm" type="video/webm">
+                                    <source src="a1.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-yellow-400">التعليمي</span>
+                            </div>
+                        </div>
+                        <!-- فيديو d1 (دمج في التسويق) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="marketing">
+                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="d1-poster.webp">
+                                    <source src="d1.webm" type="video/webm">
+                                    <source src="d1.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-premiumPurp">التسويق</span>
+                            </div>
+                        </div>
+                        <!-- فيديو t2 (تسويق) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="marketing">
+                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="t2-poster.webp">
+                                    <source src="t2.webm" type="video/webm">
+                                    <source src="t2.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-premiumPurp">التسويق</span>
+                            </div>
+                        </div>
+                        <!-- فيديو m2 (motion) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="motion">
+                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="m2-poster.webp">
+                                    <source src="m2.webm" type="video/webm">
+                                    <source src="m2.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-indigo-400">Motion</span>
+                            </div>
+                        </div>
+                        <!-- فيديو v5 (منتجات) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="products">
+                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="v5-poster.webp">
+                                    <source src="v5.webm" type="video/webm">
+                                    <source src="v5.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-teal-400">منتجات</span>
+                            </div>
+                        </div>
+                        <!-- فيديو a2 (التعليمي) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="edu">
+                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="a2-poster.webp">
+                                    <source src="a2.webm" type="video/webm">
+                                    <source src="a2.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-yellow-400">التعليمي</span>
+                            </div>
+                        </div>
+                        <!-- فيديو v6 (منتجات) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="products">
+                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="v6-poster.webp">
+                                    <source src="v6.webm" type="video/webm">
+                                    <source src="v6.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-teal-400">منتجات</span>
+                            </div>
+                        </div>
+                        <!-- فيديو m3 (motion) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="motion">
+                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="m3-poster.webp">
+                                    <source src="m3.webm" type="video/webm">
+                                    <source src="m3.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-indigo-400">Motion</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- المسار الثاني (يتحرك لليسار تلقائياً) -->
+                <div class="marquee-container py-12" id="marqueeContainer2">
+                    <div class="marquee-track" id="track2">
+                        <!-- فيديو t22 (تسويق) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="marketing">
+                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="t22-poster.webp">
+                                    <source src="t22.webm" type="video/webm">
+                                    <source src="t22.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-premiumPurp">التسويق</span>
+                            </div>
+                        </div>
+                        <!-- فيديو m4 (motion) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="motion">
+                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="m4-poster.webp">
+                                    <source src="m4.webm" type="video/webm">
+                                    <source src="m4.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-indigo-400">Motion</span>
+                            </div>
+                        </div>
+                        <!-- فيديو v9 (منتجات) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="products">
+                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="v9-poster.webp">
+                                    <source src="v9.webm" type="video/webm">
+                                    <source src="v9.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-teal-400">منتجات</span>
+                            </div>
+                        </div>
+                        <!-- فيديو a3 (التعليمي) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="edu">
+                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="a3-poster.webp">
+                                    <source src="a3.webm" type="video/webm">
+                                    <source src="a3.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-yellow-400">التعليمي</span>
+                            </div>
+                        </div>
+                        <!-- فيديو d2 (دمج في التسويق) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="marketing">
+                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="d2-poster.webp">
+                                    <source src="d2.webm" type="video/webm">
+                                    <source src="d2.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-premiumPurp">التسويق</span>
+                            </div>
+                        </div>
+                        <!-- فيديو t17 (تسويق) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="marketing">
+                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="t17-poster.webp">
+                                    <source src="t17.webm" type="video/webm">
+                                    <source src="t17.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-premiumPurp">التسويق</span>
+                            </div>
+                        </div>
+                        <!-- فيديو m5 (motion) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="motion">
+                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="m5-poster.webp">
+                                    <source src="m5.webm" type="video/webm">
+                                    <source src="m5.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-indigo-400">Motion</span>
+                            </div>
+                        </div>
+                        <!-- فيديو v14 (منتجات) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="products">
+                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="v14-poster.webp">
+                                    <source src="v14.webm" type="video/webm">
+                                    <source src="v14.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-teal-400">منتجات</span>
+                            </div>
+                        </div>
+                        <!-- فيديو v20 (منتجات) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="products">
+                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="v20-poster.webp">
+                                    <source src="v20.webm" type="video/webm">
+                                    <source src="v20.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-teal-400">منتجات</span>
+                            </div>
+                        </div>
+                        <!-- فيديو v2 (منتجات) -->
+                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="products">
+                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
+                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="v2-poster.webp">
+                                    <source src="v2.webm" type="video/webm">
+                                    <source src="v2.mp4" type="video/mp4">
+                                </video>
+                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-teal-400">منتجات</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- شبكة التصفية المستوية للفئات -->
+            <div id="flatGridGallery" class="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 hidden py-8">
+                <!-- سيتم تجميع الكروت ديناميكياً بدون تكرار -->
+            </div>
+        </section>
+
+        <!-- الصفحة 4: بعض من العملاء (Testimonials) -->
+        <section id="testimonials" class="py-32 px-4 md:px-6 max-w-7xl mx-auto relative">
+            <div class="text-center mb-16">
+                <span class="text-premiumPurp text-xs sm:text-sm font-bold uppercase tracking-wider block mb-2">// بعض من العملاء</span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black">بعض من العملاء</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 1. عماد أفندي -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="flex items-center space-x-3 space-x-reverse mb-4">
+                            <div class="w-12 h-12 rounded-full bg-premiumPurp/20 flex items-center justify-center font-black">ع</div>
+                            <div>
+                                <h4 class="font-bold text-sm">عماد أفندي</h4>
+                                <span class="text-xs text-gray-400">صانع محتوى مالي وتقني</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            "عمل ممتاز ورائع جداً. دقة عمر في مطابقة الإيقاع الصوتي مع اللقطات والانتقالات تزيد من روعة وحماس المشاهد من أول ثانية!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                        <button class="audio-toggle-btn w-10 h-10 rounded-full bg-premiumPurp flex items-center justify-center hover:scale-105 transition-all text-sm">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <div class="flex space-x-1 space-x-reverse items-center flex-grow mx-3 audio-waves">
+                            <div class="w-1 h-4 bg-purple-500 rounded-full"></div>
+                            <div class="w-1 h-8 bg-purple-400 rounded-full"></div>
+                            <div class="w-1 h-6 bg-purple-500 rounded-full"></div>
+                            <div class="w-1 h-9 bg-indigo-500 rounded-full"></div>
+                            <div class="w-1 h-5 bg-indigo-400 rounded-full"></div>
+                        </div>
+                        <span class="text-[10px] text-gray-500">0:12</span>
+                    </div>
+                </div>
+
+                <!-- 2. مدرس فيزياء Physics Academy -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="flex items-center space-x-3 space-x-reverse mb-4">
+                            <div class="w-12 h-12 rounded-full bg-premiumIndigo/20 flex items-center justify-center font-black">P</div>
+                            <div>
+                                <h4 class="font-bold text-sm">Physics Academy</h4>
+                                <span class="text-xs text-gray-400">أكاديمية فيزياء تعليمية</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            "المقاطع البصرية والتحريكات الفيزيائية التي صممها عمر سهّلت وصول المعلومة للطلاب بطريقة احترافية ومشوقة للغاية!"
+                        </p>
+                    </div>
+                    <div class="bg-black/40 rounded-xl p-3 border border-white/5 text-xs text-green-400 flex items-center justify-between">
+                        <span><i class="fa-brands fa-whatsapp text-lg ml-2"></i> "حققنا أعلى نسبة بقاء ومتابعة للطلاب بالدروس..."</span>
+                        <i class="fa-solid fa-check-double text-blue-400"></i>
+                    </div>
+                </div>
+
+                <!-- 3. براند لاروفي للمنتجات لاروفي -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="flex items-center space-x-3 space-x-reverse mb-4">
+                            <div class="w-12 h-12 rounded-full bg-teal-500/20 flex items-center justify-center font-black">ل</div>
+                            <div>
+                                <h4 class="font-bold text-sm">براند لاروفي (Larovi)</h4>
+                                <span class="text-xs text-gray-400">مستحضرات تجميل ومنتجات فاخرة</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            "ألوان إعلانات المنتجات كانت مبهرة وجذابة للغاية. المونتاج المتناسق مع الهوية البصرية ساهم بقوة في زيادة مبيعاتنا وتثبيت علامتنا التجارية."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                        <button class="audio-toggle-btn w-10 h-10 rounded-full bg-premiumPurp flex items-center justify-center hover:scale-105 transition-all text-sm">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <div class="flex space-x-1 space-x-reverse items-center flex-grow mx-3 audio-waves">
+                            <div class="w-1 h-3 bg-purple-500 rounded-full"></div>
+                            <div class="w-1 h-7 bg-purple-400 rounded-full"></div>
+                            <div class="w-1 h-5 bg-purple-500 rounded-full"></div>
+                            <div class="w-1 h-8 bg-indigo-500 rounded-full"></div>
+                            <div class="w-1 h-4 bg-indigo-400 rounded-full"></div>
+                        </div>
+                        <span class="text-[10px] text-gray-500">0:21</span>
+                    </div>
+                </div>
+
+                <!-- 4. دكتور الأسنان -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="flex items-center space-x-3 space-x-reverse mb-4">
+                            <div class="w-12 h-12 rounded-full bg-orange-500/20 flex items-center justify-center font-black">د</div>
+                            <div>
+                                <h4 class="font-bold text-sm">دكتور الأسنان</h4>
+                                <span class="text-xs text-gray-400">مركز طب وتجميل أسنان متخصص</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            "رقي في التعامل، سرعة والتزام بالوقت، مع أداء مونتاج مريح جداً للعين وممتع لمرضى ومتابعي العيادة. ننصح بالعمل معه بلا شك."
+                        </p>
+                    </div>
+                    <div class="bg-black/40 rounded-xl p-3 border border-white/5 text-xs text-green-400 flex items-center justify-between">
+                        <span><i class="fa-brands fa-whatsapp text-lg ml-2"></i> "عمل فني غاية في الرقي ومناسب للجميع..."</span>
+                        <i class="fa-solid fa-check-double text-blue-400"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- الصفحة 5: مقارنة قبل وبعد التفاعلية (Before/After Reels Video Slider) -->
+        <section id="before-after" class="py-32 px-4 md:px-6 bg-black/30 relative">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <span class="text-premiumPurp text-sm font-bold uppercase tracking-wider block mb-2">// لمسات المونتاج السحرية</span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black">مقارنة بين قبل وبعد المونتاج</h2>
+                <p class="text-gray-400 mt-4 text-xs sm:text-sm md:text-base">اسحب المقبض في المنتصف لمشاهدة الفارق المذهل بين المادة الخام وتعديلات عمر النهائية بمقاس الريلز.</p>
+            </div>
+
+            <!-- هيكل المنزلق بمقاس الريلز الطولي (9:16) مدمج بالفيديوهات الحقيقية المزدوجة q1 و a1 -->
+            <div class="max-w-[340px] aspect-[9/16] mx-auto relative rounded-3xl overflow-hidden glass-card p-1 select-none slider-img-container" id="sliderContainer">
+                
+                <!-- بعد التعديل والتلوين (النسخة النهائية الملونة - الطبقة السفلية بالكامل) -->
+                <div class="absolute inset-1 rounded-2xl overflow-hidden">
+                    <video id="afterVideo" class="w-full h-full object-cover" loop muted playsinline autoplay preload="metadata" poster="a1-poster.webp">
+                        <source src="a1.webm" type="video/webm">
+                        <source src="a1.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- قبل التعديل والتلوين (المادة الخام - الطبقة العلوية المقصوصة ديناميكياً) -->
+                <div class="absolute inset-1 rounded-2xl overflow-hidden z-10 w-1/2" id="beforeLayer">
+                    <!-- تم تفعيل أبعاد ثابتة لمنع انضغاط أو تشوه الفيديو قبل القص -->
+                    <video id="beforeVideo" class="h-full object-cover max-w-none" loop muted playsinline autoplay style="width: 332px;" preload="metadata" poster="q1-poster.webp">
+                        <source src="q1.webm" type="video/webm">
+                        <source src="q1.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- مقبض السحب (Slider Handle) -->
+                <div class="absolute top-1 bottom-1 left-1/2 -ml-3 w-6 bg-gradient-to-b from-premiumPurp to-premiumIndigo rounded-full z-20 cursor-ew-resize flex items-center justify-center shadow-lg shadow-purple-500/50" id="sliderHandle">
+                    <i class="fa-solid fa-arrows-left-right text-xs text-white"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- الصفحة 6: خطة وطريقة العمل (Workflow Timeline) -->
+        <section id="workflow" class="py-32 px-4 md:px-6 max-w-5xl mx-auto relative">
+            <div class="text-center mb-24">
+                <span class="text-premiumPurp text-xs sm:text-sm font-bold uppercase tracking-wider block mb-2">// كيف نصل إلى النتيجة المطلوبة؟</span>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black">خطوات العمل المنظمة</h2>
+            </div>
+
+            <!-- خط الزمن التفاعلي متناسق هندسياً على الموبايل -->
+            <div class="relative timeline-container">
+                <div class="absolute right-6 md:right-1/2 top-0 bottom-0 w-1 bg-white/10 rounded-full md:transform md:translate-x-1/2">
+                    <div class="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b from-premiumPurp to-premiumIndigo origin-top scale-y-0" id="timelineProgress"></div>
+                </div>
+
+                <div class="space-y-16">
+                    <!-- خطوة 1 -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center timeline-card">
+                        <div class="w-full md:w-1/2 md:pl-12 text-right md:text-left order-2 md:order-1"></div>
+                        <div class="absolute right-3 md:right-1/2 w-7 h-7 bg-premiumPurp rounded-full z-10 md:transform md:translate-x-1/2 border-4 border-darkBg flex items-center justify-center"></div>
+                        <div class="w-full md:w-1/2 pr-16 md:pr-12 order-3">
+                            <div class="glass-card p-6 rounded-2xl relative">
+                                <span class="text-xs font-bold text-premiumPurp">01. الاجتماع الأولي</span>
+                                <h3 class="text-base sm:text-lg font-bold mt-1">البريف والاجتماع (Briefing & Meeting)</h3>
+                                <p class="text-gray-400 text-xs sm:text-sm mt-2 leading-relaxed">نجتمع لنسمع فكرة مشروعك، نحدد الأهداف، والجمهور المستهدف لنضمن بناء فكرة تخدم المشروع بشكل دقيق.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- line card 2 -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center timeline-card">
+                        <div class="w-full md:w-1/2 pr-16 md:pr-0 order-3 md:order-1">
+                            <div class="glass-card p-6 rounded-2xl relative">
+                                <span class="text-xs font-bold text-premiumIndigo">02. السعر والستايل</span>
+                                <h3 class="text-base sm:text-lg font-bold mt-1">السعر وتنسيق الهوية البصرية (Pricing)</h3>
+                                <p class="text-gray-400 text-xs sm:text-sm mt-2 leading-relaxed">نتفق على خطة تسعير مناسبة، ونطرح نماذج تشبه الرؤية الفنية لتوحيد الأفكار البصرية قبل البدء الفعلي.</p>
+                            </div>
+                        </div>
+                        <div class="absolute right-3 md:right-1/2 w-7 h-7 bg-premiumIndigo rounded-full z-10 md:transform md:translate-x-1/2 border-4 border-darkBg flex items-center justify-center"></div>
+                        <div class="w-full md:w-1/2 md:pl-12 order-2"></div>
+                    </div>
+
+                    <!-- line card 3 -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center timeline-card">
+                        <div class="w-full md:w-1/2 md:pl-12 text-right md:text-left order-2 md:order-1"></div>
+                        <div class="absolute right-3 md:right-1/2 w-7 h-7 bg-premiumPurp rounded-full z-10 md:transform md:translate-x-1/2 border-4 border-darkBg flex items-center justify-center"></div>
+                        <div class="w-full md:w-1/2 pr-16 md:pr-12 order-3">
+                            <div class="glass-card p-6 rounded-2xl relative">
+                                <span class="text-xs font-bold text-premiumPurp">03. الجدولة الزمنية</span>
+                                <h3 class="text-base sm:text-lg font-bold mt-1">الالتزام بالجدول والمهلة (Deadline)</h3>
+                                <p class="text-gray-400 text-xs sm:text-sm mt-2 leading-relaxed">نحدد جدولاً زمنياً مفصلاً ونلتزم به تماماً لتسليم كل مرحلة من مراحل المونتاج والتحريك.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- line card 4 -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center timeline-card">
+                        <div class="w-full md:w-1/2 pr-16 md:pr-0 order-3 md:order-1">
+                            <div class="glass-card p-6 rounded-2xl relative">
+                                <span class="text-xs font-bold text-premiumIndigo">04. المسودة الأولى</span>
+                                <h3 class="text-base sm:text-lg font-bold mt-1">النسخة الأولى للتجهيز (V1 / Draft)</h3>
+                                <p class="text-gray-400 text-xs sm:text-sm mt-2 leading-relaxed">نعرض عليك النسخة الأولية لاستقبال الملاحظات الأولى وضبط رتم وموسيقى المقطع لتطابق الرؤية.</p>
+                            </div>
+                        </div>
+                        <div class="absolute right-3 md:right-1/2 w-7 h-7 bg-premiumIndigo rounded-full z-10 md:transform md:translate-x-1/2 border-4 border-darkBg flex items-center justify-center"></div>
+                        <div class="w-full md:w-1/2 md:pl-12 order-2"></div>
+                    </div>
+
+                    <!-- line card 5 -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center timeline-card">
+                        <div class="w-full md:w-1/2 md:pl-12 text-right md:text-left order-2 md:order-1"></div>
+                        <div class="absolute right-3 md:right-1/2 w-7 h-7 bg-green-500 rounded-full z-10 md:transform md:translate-x-1/2 border-4 border-darkBg flex items-center justify-center animate-ping"></div>
+                        <div class="w-full md:w-1/2 pr-16 md:pr-12 order-3">
+                            <div class="glass-card p-6 rounded-2xl relative border-green-500/20 shadow-lg shadow-green-500/5">
+                                <span class="text-xs font-bold text-green-400">05. ماستر كود</span>
+                                <h3 class="text-base sm:text-lg font-bold mt-1">التسليم النهائي الفاخر (Final Master)</h3>
+                                <p class="text-gray-400 text-xs sm:text-sm mt-2 leading-relaxed">ننهي التلوين الدقيق وإضافة المؤثرات الصوتية النهائية ونسلمك العمل بأعلى صيغة ودقة متاحة.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- الصفحة 7: طرق التواصل (Contact Footer) -->
+        <section id="contact" class="py-32 px-4 md:px-6 bg-black/50 border-t border-white/5 relative">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="inline-block text-premiumPurp text-xs font-bold tracking-widest px-4 py-2 rounded-full glass-card mb-6 border-purple-500/20 uppercase">دعنا نتعاون</span>
+                <h2 class="text-3xl md:text-6xl font-black mb-8">هل مشروعك القادم جاهز ليتحرك؟</h2>
+                <p class="text-gray-300 text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-12">
+                    تواصل مباشرة، لنبدأ في تحويل أفكارك ورؤيتك لقصة بصرية ساحرة لا تُمحى من ذاكرة المشاهدين.
+                </p>
+
+                <!-- أزرار التواصل بروابطك الفعالة مباشرة -->
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="https://wa.me/201149865999" target="_blank" class="magnetic w-16 h-16 rounded-full glass-card flex items-center justify-center text-xl text-green-400 hover:bg-green-500/10 transition-colors" title="واتساب مباشر">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/omardesoky_/" target="_blank" class="magnetic w-16 h-16 rounded-full glass-card flex items-center justify-center text-xl text-pink-400 hover:bg-pink-500/10 transition-colors" title="انستجرام عمر">
+                        <i class="fa-brands fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="tel:+201149865999" class="magnetic w-16 h-16 rounded-full glass-card flex items-center justify-center text-xl text-blue-400 hover:bg-blue-500/10 transition-colors" title="اتصال مباشر">
+                        <i class="fa-solid fa-phone text-2xl"></i>
+                    </a>
+                    <a href="mailto:omareldesoky999@gmail.com" class="magnetic w-16 h-16 rounded-full glass-card flex items-center justify-center text-xl text-purple-400 hover:bg-purple-500/10 transition-colors" title="بريد الكتروني">
+                        <i class="fa-solid fa-envelope text-2xl"></i>
+                    </a>
+                </div>
+
+                <div class="mt-24 text-xs text-gray-500">
+                    &copy; 2026 OMAR EL-DESOUKI. جميع الحقوق محفوظة. تم التطوير بحب وفن التحريك الفطري.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- زر التحكم العائم بالموسيقى السينمائية للخلفية -->
+    <div class="fixed bottom-6 left-6 z-50">
+        <button id="musicToggleBtn" class="w-12 h-12 rounded-full bg-premiumPurp flex items-center justify-center text-white shadow-lg shadow-purple-500/30 hover:scale-110 transition-all duration-300 relative">
+            <i class="fa-solid fa-volume-high text-lg" id="musicIcon"></i>
+            <span class="absolute right-14 bg-black/80 text-xs px-3 py-1.5 rounded-lg whitespace-nowrap text-white font-bold opacity-0 transition-opacity" id="musicTooltip">كتم موسيقى الخلفية السينمائية</span>
+        </button>
+    </div>
+
+    <!-- مكتبة GSAP و ScrollTrigger لتطبيق حركات علم التحريك والارتداد الفيزيائي -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. مؤشر الماوس المخصص والمغناطيسي (يعمل على أجهزة الكمبيوتر واللاب توب فقط)
+        const dot = document.getElementById('cursorDot');
+        const ring = document.getElementById('cursorRing');
+
+        if (window.innerWidth > 1024) {
+            window.addEventListener('mousemove', (e) => {
+                gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0.05 });
+                gsap.to(ring, { x: e.clientX, y: e.clientY, duration: 0.25, ease: "power2.out" });
+            });
+
+            document.querySelectorAll('a, button, .interactive-card, .magnetic, .filter-btn, .interactive-reel-card').forEach(elem => {
+                elem.addEventListener('mouseenter', () => {
+                    gsap.to(ring, { scale: 1.8, borderColor: '#a855f7', duration: 0.3, ease: "back.out(2)" });
+                });
+                elem.addEventListener('mouseleave', () => {
+                    gsap.to(ring, { scale: 1, borderColor: 'rgba(168, 85, 247, 0.5)', duration: 0.3 });
+                });
+            });
+        }
+
+        // تحريك العناصر المغناطيسية بدقة متناهية وإعادتها للصفر تماماً لعدم التشوه
+        const magnetics = document.querySelectorAll('.magnetic');
+        magnetics.forEach(elem => {
+            elem.addEventListener('mousemove', (e) => {
+                const rect = elem.getBoundingClientRect();
+                const x = e.clientX - (rect.left + rect.width / 2);
+                const y = e.clientY - (rect.top + rect.height / 2);
+                gsap.to(elem, {
+                    x: x * 0.3,
+                    y: y * 0.3,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+            elem.addEventListener('mouseleave', () => {
+                gsap.to(elem, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "elastic.out(1, 0.3)"
+                });
+            });
+        });
+
+        // 2. التحكم في الموسيقى الخلفية والتشغيل السريع الفوري
+        const bgMusic = document.getElementById('music');
+        const musicBtn = document.getElementById('musicToggleBtn');
+        const musicIcon = document.getElementById('musicIcon');
+        const musicTooltip = document.getElementById('musicTooltip');
+        let originalMusicVolume = 0.4;
+
+        bgMusic.volume = originalMusicVolume;
+        bgMusic.loop = true;
+
+        // دالة لتحديث واجهة المستخدم (الأيقونة والنص المساعد) بناءً على حالة الصوت الفعلية
+        const updateMusicUI = () => {
+            if (bgMusic.paused) {
+                musicIcon.className = "fa-solid fa-volume-xmark text-lg";
+                musicTooltip.textContent = "تشغيل موسيقى الخلفية";
+            } else {
+                musicIcon.className = "fa-solid fa-volume-high text-lg";
+                musicTooltip.textContent = "كتم موسيقى الخلفية";
+            }
+        };
+
+        // محاولة تشغيل الصوت تلقائياً عند تحميل الصفحة (قد يتم حظرها من المتصفح وهذا طبيعي)
+        const startAutoplayMusic = () => {
+            bgMusic.play().then(() => {
+                updateMusicUI();
+            }).catch(err => {
+                console.log("Autoplay blocked by browser. Awaiting first user click.");
+                updateMusicUI();
+            });
+        };
+
+        window.addEventListener('DOMContentLoaded', startAutoplayMusic);
+        window.addEventListener('load', startAutoplayMusic);
+
+        // تشغيل الصوت فوراً بمجرد حدوث أول نقرة حقيقية للمستخدم في أي مكان بالموقع
+        const forceAutoplayOnInteraction = () => {
+            if (bgMusic.paused) {
+                bgMusic.play().then(() => {
+                    updateMusicUI();
+                    removeInteractionListeners();
+                }).catch(e => console.log("Music play deferred:", e));
+            } else {
+                removeInteractionListeners();
+            }
+        };
+        
+        const removeInteractionListeners = () => {
+            document.removeEventListener('click', forceAutoplayOnInteraction);
+            document.removeEventListener('touchstart', forceAutoplayOnInteraction);
+        };
+
+        // نستمع فقط للنقرات واللمس الفعلي (لأن السكرول وحركة الماوس لا تمنح صلاحية تشغيل الصوت للمتصفحات)
+        document.addEventListener('click', forceAutoplayOnInteraction);
+        document.addEventListener('touchstart', forceAutoplayOnInteraction);
+
+        // تفعيل إظهار وإخفاء الـ Tooltip لزر الموسيقى عند وقوف الماوس عليه
+        musicBtn.addEventListener('mouseenter', () => {
+            musicTooltip.classList.remove('opacity-0');
+        });
+        musicBtn.addEventListener('mouseleave', () => {
+            musicTooltip.classList.add('opacity-0');
+        });
+
+        // زر التبديل اليدوي للموسيقى (يعمل الآن من أول نقرة وبشكل مضمون)
+        const toggleMusic = () => {
+            if (bgMusic.paused) {
+                bgMusic.play().then(() => {
+                    updateMusicUI();
+                    removeInteractionListeners(); // حذف مستمعات الأحداث العامة لأن المستخدم بادر بالتشغيل بنفسه
+                }).catch(e => console.log(e));
+            } else {
+                bgMusic.pause();
+                updateMusicUI();
+            }
+        };
+
+        musicBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // منع انتشار الحدث لعدم تعارض حدث الزر مع حدث الصفحة العام
+            toggleMusic();
+        });
+
+        // تفعيل قائمة الهواتف المحمولة وتجاوبها الكامل
+        const mobileMenuTrigger = document.getElementById('mobileMenuTrigger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileMenuTrigger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = "fa-solid fa-bars text-xl";
+            } else {
+                menuIcon.className = "fa-solid fa-xmark text-xl";
+            }
+        });
+
+        // إغلاق قائمة الجوال تلقائياً عند الضغط على أي رابط بداخلها
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = "fa-solid fa-bars text-xl";
+            });
+        });
+
+        // منطق النقر على الزر الرئيسي (Hero CTA): الانتقال البطيء الهادئ (duration = 2000ms) وتفعيل الصوت فوراً من النقرة الأولى
+        document.getElementById('heroCTA').addEventListener('click', () => {
+            // تشغيل الموسيقى فوراً بمجرد النقرة الأولى لكسر حظر المتصفحات الصارم
+            if (bgMusic.paused) {
+                bgMusic.play().then(() => {
+                    updateMusicUI();
+                    removeInteractionListeners();
+                }).catch(e => console.log(e));
+            }
+
+            // حركة الانتقال البطيء التدريجي الهادئ (2000 ملي ثانية) بدون مكتبات خارجية
+            const targetSection = document.getElementById('about');
+            const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - 80; // إزاحة طفيفة للهيدر
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            const duration = 2000; // ثانيتان لتجربة انزلاقية هادئة وسينمائية
+            let startTime = null;
+
+            function slowScrollAnimation(currentTime) {
+                if (!startTime) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const progress = Math.min(timeElapsed / duration, 1);
+
+                // معادلة السلاسة الثنائية (easeInOutQuad) للحصول على حركة تبدأ ببطء ثم تتسارع ثم تقف بهدوء
+                const easeInOutQuad = progress < 0.5 
+                    ? 2 * progress * progress 
+                    : -1 + (4 - 2 * progress) * progress;
+
+                window.scrollTo(0, startPosition + distance * easeInOutQuad);
+
+                if (timeElapsed < duration) {
+                    window.requestAnimationFrame(slowScrollAnimation);
+                }
+            }
+            window.requestAnimationFrame(slowScrollAnimation);
+        });
+
+        // 3. تحريكات الصفحة الأولى (Hero Text-reveal Elastic Transition)
+        gsap.from("#hero h1", {
+            y: 80,
+            opacity: 0,
+            duration: 1.5,
+            ease: "back.out(1.5)",
+            delay: 0.2,
+            onStart: () => {
+                forceAutoplayOnInteraction();
+            }
+        });
+        gsap.from("#hero p", {
+            y: 30,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            delay: 0.6
+        });
+        gsap.from("#heroCTA, #hero span", {
+            scale: 0.8,
+            opacity: 0,
+            duration: 1.2,
+            ease: "back.out(1.7)",
+            delay: 0.8
+        });
+
+        // 4. عداد الأرقام الصاعد تلقائياً عند التمرير
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            gsap.fromTo(counter, 
+                { textContent: 0 }, 
+                { 
+                    textContent: target,
+                    duration: 2.5,
+                    ease: "power3.out",
+                    snap: { textContent: 1 },
+                    scrollTrigger: {
+                        trigger: "#about",
+                        start: "top 75%",
+                    }
+                }
+            );
+        });
+
+        // 5. بناء مسارات الدوران الأفقي اللانهائية ومضاعفة الكروت لمنع أي فراغات نهائياً
+        const track1 = document.getElementById('track1');
+        const track2 = document.getElementById('track2');
+
+        // التقاط كروت الفيديوهات الفريدة قبل مضاعفتها لتجنب تكرار الكروت عند الفلترة
+        const originalUniqueCards = Array.from(document.querySelectorAll('.interactive-reel-card'));
+
+        const originalCount1 = track1.children.length;
+        const originalCount2 = track2.children.length;
+
+        const originalContent1 = track1.innerHTML;
+        const originalContent2 = track2.innerHTML;
+
+        track1.innerHTML = originalContent1 + originalContent1 + originalContent1 + originalContent1;
+        track2.innerHTML = originalContent2 + originalContent2 + originalContent2 + originalContent2;
+
+        let tweenTrack1, tweenTrack2;
+
+        const initMarqueeAnimations = () => {
+            const singleSetWidth1 = track1.children[originalCount1].offsetLeft - track1.children[0].offsetLeft;
+            const singleSetWidth2 = track2.children[originalCount2].offsetLeft - track2.children[0].offsetLeft;
+
+            tweenTrack1 = gsap.to(track1, {
+                x: -singleSetWidth1,
+                duration: 25,
+                repeat: -1,
+                ease: "none",
+                force3D: true
+            });
+
+            gsap.set(track2, { x: -singleSetWidth2 });
+            tweenTrack2 = gsap.to(track2, {
+                x: 0,
+                duration: 25,
+                repeat: -1,
+                ease: "none",
+                force3D: true
+            });
+        };
+
+        window.addEventListener('load', initMarqueeAnimations);
+
+        let activeHoveredVideo = null;
+
+        // تفعيل استجابة الكروت عند الاقتراب بالماوس مع تصفير تشغيل الفيديو من البداية عند العودة له
+        const initReelInteractions = () => {
+            const reelCards = document.querySelectorAll('.interactive-reel-card');
+            
+            reelCards.forEach(card => {
+                const video = card.querySelector('video');
+
+                card.addEventListener('mouseenter', () => {
+                    if (tweenTrack1 && tweenTrack2) {
+                        tweenTrack1.pause();
+                        tweenTrack2.pause();
+                    }
+                    
+                    gsap.to(card, {
+                        scale: 1.15,
+                        zIndex: 100,
+                        duration: 0.4,
+                        ease: "back.out(2.2)"
+                    });
+
+                    if (video) {
+                        video.currentTime = 0; // تصفير وإعادة تشغيل الفيديو من البداية عند معاودته
+                        video.muted = false;
+                        video.play().catch(()=>{});
+                        activeHoveredVideo = video;
+
+                        if (!bgMusic.paused) {
+                            gsap.to(bgMusic, { volume: 0, duration: 0.8, ease: "power1.out" });
+                        }
+                    }
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    if (tweenTrack1 && tweenTrack2) {
+                        tweenTrack1.play();
+                        tweenTrack2.play();
+                    }
+
+                    gsap.to(card, {
+                        scale: 1,
+                        zIndex: 1,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    });
+
+                    if (video) {
+                        video.muted = true;
+                        activeHoveredVideo = null;
+                        
+                        if (!bgMusic.paused) {
+                            gsap.to(bgMusic, { volume: originalMusicVolume, duration: 0.8, ease: "power1.out" });
+                        }
+                    }
+                });
+            });
+        };
+
+        initReelInteractions();
+
+        // منطق تصفية الكروت وتحويل العرض بالكامل لـ (Flat Grid) دون تكرار
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const cylinderContainers = document.getElementById('cylinderContainers');
+        const flatGridGallery = document.getElementById('flatGridGallery');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active', 'bg-premiumPurp', 'text-white'));
+                filterButtons.forEach(b => b.classList.add('text-gray-400'));
+                btn.classList.add('active', 'bg-premiumPurp', 'text-white');
+                btn.classList.remove('text-gray-400');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                if (filterValue === 'all') {
+                    flatGridGallery.classList.add('hidden');
+                    cylinderContainers.classList.remove('hidden');
+                    
+                    if (tweenTrack1 && tweenTrack2) {
+                        tweenTrack1.play();
+                        tweenTrack2.play();
+                    }
+                } else {
+                    if (tweenTrack1 && tweenTrack2) {
+                        tweenTrack1.pause();
+                        tweenTrack2.pause();
+                    }
+                    cylinderContainers.classList.add('hidden');
+                    flatGridGallery.classList.remove('hidden');
+
+                    flatGridGallery.innerHTML = '';
+                    
+                    // استخدام الكروت الفردية لتجنب اللقطات المكررة
+                    const filteredCards = originalUniqueCards.filter(card => card.getAttribute('data-category') === filterValue);
+                    
+                    filteredCards.forEach(card => {
+                        const clone = card.cloneNode(true);
+                        clone.className = "glass-card rounded-2xl overflow-hidden p-1 w-full aspect-[9/16] relative transition-transform duration-300 cursor-pointer";
+                        clone.style.transform = "none";
+                        clone.style.position = "relative";
+                        clone.style.left = "auto";
+                        clone.style.top = "auto";
+                        clone.style.margin = "0";
+
+                        const clonedVideo = clone.querySelector('video');
+                        if (clonedVideo) {
+                            clonedVideo.muted = true;
+                            clonedVideo.preload = "metadata";
+                            clonedVideo.play().catch(() => {});
+                        }
+
+                        clone.addEventListener('mouseenter', () => {
+                            gsap.to(clone, { scale: 1.08, ease: "back.out(2.2)", duration: 0.3 });
+                            if (clonedVideo) {
+                                clonedVideo.currentTime = 0; // إعادة التشغيل من الصفر عند الوقوف عليه في الفلتر
+                                clonedVideo.muted = false;
+                                clonedVideo.play().catch(()=>{});
+                                activeHoveredVideo = clonedVideo;
+                                if (!bgMusic.paused) {
+                                    gsap.to(bgMusic, { volume: 0, duration: 0.8, ease: "power1.out" });
+                                }
+                            }
+                        });
+                        clone.addEventListener('mouseleave', () => {
+                            gsap.to(clone, { scale: 1, duration: 0.3 });
+                            if (clonedVideo) {
+                                clonedVideo.muted = true;
+                                activeHoveredVideo = null;
+                                if (!bgMusic.paused) {
+                                    gsap.to(bgMusic, { volume: originalMusicVolume, duration: 0.8, ease: "power1.out" });
+                                }
+                            }
+                        });
+
+                        flatGridGallery.appendChild(clone);
+                        gsap.fromTo(clone, { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.5)" });
+                    });
+                }
+            });
+        });
+
+        // مراقبة التمرير لإعادة تشغيل موسيقى الخلفية إن خرج الزائر من نطاق الفيديوهات
+        ScrollTrigger.create({
+            trigger: "#gallery",
+            start: "top bottom",
+            end: "bottom top",
+            onLeave: () => {
+                if (!bgMusic.paused) {
+                    gsap.to(bgMusic, { volume: originalMusicVolume, duration: 0.8, ease: "power1.out" });
+                }
+            },
+            onLeaveBack: () => {
+                if (!bgMusic.paused) {
+                    gsap.to(bgMusic, { volume: originalMusicVolume, duration: 0.8, ease: "power1.out" });
+                }
+            }
+        });
+
+        // 6. منزلق المقارنة التفاعلي لـ (قبل وبعد المونتاج) المطور بالفيديو والتزامن التلقائي
+        const slider = document.getElementById('sliderContainer');
+        const beforeLayer = document.getElementById('beforeLayer');
+        const handle = document.getElementById('sliderHandle');
+        const beforeVideo = document.getElementById('beforeVideo');
+        const afterVideo = document.getElementById('afterVideo');
+
+        // تحديث أبعاد الفيديو الداخلي لمنع تمدد الصورة عند القص
+        const syncVideoSize = () => {
+            const sliderWidth = slider.getBoundingClientRect().width - 8;
+            beforeVideo.style.width = `${sliderWidth}px`;
+        };
+
+        window.addEventListener('resize', syncVideoSize);
+        window.addEventListener('load', syncVideoSize);
+
+        // تزامن كامل بين الفيديوهات q1 و a1
+        const playAndSyncVideos = () => {
+            beforeVideo.play().catch(e => console.log(e));
+            afterVideo.play().catch(e => console.log(e));
+            beforeVideo.currentTime = afterVideo.currentTime;
+        };
+
+        afterVideo.addEventListener('play', () => beforeVideo.play());
+        afterVideo.addEventListener('pause', () => beforeVideo.pause());
+        afterVideo.addEventListener('seeking', () => beforeVideo.currentTime = afterVideo.currentTime);
+        afterVideo.addEventListener('seeked', () => beforeVideo.currentTime = afterVideo.currentTime);
+
+        // مراقبة مستمرة لفرق الإطارات وحل تفاوت التشغيل
+        setInterval(() => {
+            if (Math.abs(afterVideo.currentTime - beforeVideo.currentTime) > 0.15) {
+                beforeVideo.currentTime = afterVideo.currentTime;
+            }
+        }, 1000);
+
+        // تفعيل تفاعل الماوس (Hover) على منزلق المقارنة لتشغيل الصوت وخفض موسيقى الموقع
+        slider.addEventListener('mouseenter', () => {
+            syncVideoSize();
+            afterVideo.muted = false; // تشغيل صوت فيديو بعد التعديل a1 عند مرور الماوس
+            if (!bgMusic.paused) {
+                gsap.to(bgMusic, { volume: 0, duration: 0.8, ease: "power1.out" }); // خفض صوت موسيقى الخلفية ببطء
+            }
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            afterVideo.muted = true; // كتم صوت فيديو بعد التعديل عند خروج الماوس مع استمرار الفيديو
+            if (!bgMusic.paused) {
+                gsap.to(bgMusic, { volume: originalMusicVolume, duration: 0.8, ease: "power1.out" }); // إعادة موسيقى الخلفية ببطء
+            }
+        });
+
+        // تحكم السكرول فقط لضمان بقاء الفيديوهات قيد العمل والسينك
+        ScrollTrigger.create({
+            trigger: "#before-after",
+            start: "top 80%",
+            end: "bottom 20%",
+            onEnter: () => {
+                playAndSyncVideos();
+            },
+            onEnterBack: () => {
+                playAndSyncVideos();
+            }
+        });
+
+        // حركة السحب بالمنزلق
+        const updateSlider = (clientX) => {
+            const rect = slider.getBoundingClientRect();
+            let positionX = clientX - rect.left;
+            
+            if (positionX < 0) positionX = 0;
+            if (positionX > rect.width) positionX = rect.width;
+
+            const percentage = (positionX / rect.width) * 100;
+            
+            gsap.to(beforeLayer, { width: `${percentage}%`, duration: 0.1 });
+            gsap.to(handle, { left: `${percentage}%`, duration: 0.1 });
+        };
+
+        let isDragging = false;
+        handle.addEventListener('mousedown', () => isDragging = true);
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            updateSlider(e.clientX);
+        });
+
+        handle.addEventListener('touchstart', () => isDragging = true);
+        window.addEventListener('touchend', () => isDragging = false);
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            updateSlider(e.touches[0].clientX);
+        });
+
+        // 7. مؤشرات خطوات العمل (Workflow Timeline)
+        gsap.to("#timelineProgress", {
+            scaleY: 1,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".timeline-container",
+                start: "top 60%",
+                end: "bottom 60%",
+                scrub: true
+            }
+        });
+
+        gsap.utils.toArray(".timeline-card").forEach(card => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 80,
+                duration: 1.5,
+                ease: "back.out(1.4)",
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+
+        // 8. تشغيل تفاعلات الموجات الصوتية بصفحة آراء العملاء
+        const audioButtons = document.querySelectorAll('.audio-toggle-btn');
+        audioButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const waves = btn.parentElement.querySelectorAll('.audio-waves div');
+                const icon = btn.querySelector('i');
+
+                if (icon.classList.contains('fa-play')) {
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                    
+                    waves.forEach((wave, i) => {
+                        gsap.to(wave, {
+                            scaleY: "random(0.3, 2.2)",
+                            repeat: -1,
+                            yoyo: true,
+                            duration: 0.2 + (i * 0.05),
+                            ease: "power1.inOut"
+                        });
+                    });
+                } else {
+                    icon.classList.remove('fa-pause');
+                    icon.classList.add('fa-play');
+                    
+                    waves.forEach(wave => {
+                        gsap.killTweensOf(wave);
+                        gsap.to(wave, { scaleY: 1, duration: 0.3 });
+                    });
+                }
+            });
+        });
+
+        // 9. تقنية Intersection Observer لإيقاف تشغيل الفيديوهات البعيدة وتصفير الفيديوهات من البداية عند ظهورها مجدداً
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target;
+                if (entry.isIntersecting) {
+                    // تصفير الفيديو وإعادة تشغيله من الصفر عند ظهوره على الشاشة مجدداً لضمان التزامن
+                    video.currentTime = 0;
+                    video.play().catch(err => {
+                        console.log("Video autoplay prevented until first gesture.");
+                    });
+                } else {
+                    // إيقاف تشغيل الفيديو مؤقتاً عند خروجه لتوفير طاقة كارت الشاشة والإنترنت
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // تفعيل المراقبة لجميع فيديوهات كروت المعرض (ما عدا السلايدر التفاعلي قبل وبعد لتفادي تعارض التزامن)
+        document.querySelectorAll('video:not(#beforeVideo):not(#afterVideo)').forEach(video => {
+            videoObserver.observe(video);
+        });
+    </script>
+</body>
+</html>
