@@ -2,27 +2,16 @@
 <html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>OMAR EL-DESOUKI | Creative Motion & Video Editor Portfolio</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        darkBg: '#0b0713',
-                        premiumPurp: '#a855f7',
-                        premiumIndigo: '#6366f1',
-                    },
-                    fontFamily: {
-                        cairo: ['Cairo', 'sans-serif'],
-                        sans: ['Plus Jakarta Sans', 'Cairo', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <meta name="description" content="عمر الدسوقي — مونتير ومصمم موشن جرافيك. مونتاج ريلز وإعلانات، تلوين سينمائي، وتحريك فيزيائي بـ After Effects.">
+    <meta name="theme-color" content="#0b0713">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="OMAR EL-DESOUKI | Motion & Video Editor">
+    <meta property="og:description" content="Don’t just tell your story. Make it move. — مونتاج وموشن جرافيك احترافي.">
+    <meta property="og:image" content="p1.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="styles.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -149,10 +138,69 @@
         }
 
         /* حماية الاستجابة ومنع تشوهات العرض على الموبايل والشاشات اللمسية */
-        @media (max-width: 1024px) {
+        @media (max-width: 1024px), (hover: none) {
             .custom-cursor-dot, .custom-cursor-ring {
                 display: none !important;
             }
+        }
+
+        /* ===== مقاسات متجاوبة لكل الأجهزة ===== */
+        html { -webkit-text-size-adjust: 100%; }
+        img, video { max-width: 100%; }
+        #beforeVideo { max-width: none; }
+
+        /* عرض كروت الريلز يتغير حسب الشاشة (من 140px في الموبايل الصغير لحد 220px) */
+        .interactive-reel-card { width: clamp(140px, 40vw, 220px) !important; }
+        .marquee-container { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+
+        /* عنوان الهيرو يتناسب مع عرض الشاشة */
+        .hero-title { font-size: clamp(2rem, 8.5vw, 6rem); line-height: 1.1; }
+
+        /* الهيرو ياخد ارتفاع الشاشة الفعلي في الموبايل (بدون شريط المتصفح) */
+        .hero-min-h { min-height: calc(100vh - 6rem); min-height: calc(100svh - 6rem); }
+
+        /* زر الموسيقى بعيد عن حواف الآيفون */
+        .safe-fab { bottom: max(1.5rem, env(safe-area-inset-bottom)); left: max(1.5rem, env(safe-area-inset-left)); }
+
+        /* منزلق قبل/بعد: السحب الأفقي ما يحركش الصفحة */
+        #sliderContainer { touch-action: pan-y; }
+
+        /* موبايلات صغيرة جداً (iPhone SE / Galaxy Fold) */
+        @media (max-width: 400px) {
+            .logo-text { font-size: 1rem; letter-spacing: 0.02em; }
+            /* زر "ابدأ مشروعك" بيختفي هنا عشان زر القائمة يفضل ظاهر (موجود جوه القائمة وفي آخر الصفحة) */
+            .cta-small { display: none !important; }
+        }
+
+        /* ===== أداء: الكروت المتحركة ما تستخدمش blur (أتقل حاجة على كارت الشاشة) ===== */
+        .interactive-reel-card.glass-card {
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            background: rgba(22, 15, 38, 0.92);
+            box-shadow: none;
+        }
+        .marquee-track { will-change: transform; }
+        .bg-orb { will-change: opacity; }
+
+        /* موبايل وتابلت: نشيل كل الـ blur والأنيميشن اللي بتتعاد كل فريم */
+        @media (max-width: 1024px), (hover: none) {
+            .glass-card {
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                background: rgba(20, 13, 34, 0.94);
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            }
+            header.glass-card { background: rgba(11, 7, 19, 0.95); }
+            .bg-orb { display: none; }
+            body { background-image: radial-gradient(ellipse at 0% 0%, rgba(168,85,247,0.10), transparent 55%), radial-gradient(ellipse at 100% 100%, rgba(99,102,241,0.10), transparent 55%); }
+            .hero-name-glow, .animated-glow-border, .animate-pulse { animation: none !important; }
+            .hero-glow-text { text-shadow: 0 0 14px rgba(168, 85, 247, 0.45); }
+            .hero-name-glow { text-shadow: 0 0 10px rgba(168, 85, 247, 0.7); }
+        }
+
+        /* تقليل الحركة لمن يفضل ذلك */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
         }
     </style>
 </head>
@@ -164,11 +212,11 @@
 
     <!-- شبكة وكرات التوهج بالخلفية -->
     <div class="fixed inset-0 grid-bg z-[-2] pointer-events-none"></div>
-    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-premiumPurp/10 blur-[130px] z-[-1] pointer-events-none animate-pulse"></div>
-    <div class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-premiumIndigo/10 blur-[130px] z-[-1] pointer-events-none"></div>
+    <div class="bg-orb fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-premiumPurp/10 blur-[130px] z-[-1] pointer-events-none"></div>
+    <div class="bg-orb fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-premiumIndigo/10 blur-[130px] z-[-1] pointer-events-none"></div>
 
     <!-- مشغل الموسيقى الخلفية التلقائي مجهز للتكرار التلقائي والتشغيل الفوري -->
-    <audio id="music" loop autoplay preload="auto">
+    <audio id="music" loop preload="none">
         <source src="music.mp3" type="audio/mp3">
     </audio>
 
@@ -176,12 +224,12 @@
     <header class="fixed top-0 left-0 w-full z-50 glass-card border-none border-b border-white/5 py-3 px-4 md:px-12 transition-all duration-300">
         <div class="max-w-7xl mx-auto flex justify-between items-center gap-2">
             <!-- الشعار -->
-            <div class="text-lg md:text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-premiumPurp to-premiumIndigo truncate">
+            <a href="#hero" class="logo-text shrink-0 whitespace-nowrap text-lg md:text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-premiumPurp to-premiumIndigo" dir="ltr">
                 OMAR EL-DESOUKI
-            </div>
-            
+            </a>
+
             <!-- قائمة التنقل للديسكتوب فقط -->
-            <nav class="hidden lg:flex items-center space-x-1 space-x-reverse text-sm font-medium">
+            <nav class="hidden xl:flex items-center whitespace-nowrap space-x-1 space-x-reverse text-sm font-medium">
                 <a href="#hero" class="hover:text-premiumPurp px-3 py-2 transition-colors">الرئيسية</a>
                 <a href="#about" class="hover:text-premiumPurp px-3 py-2 transition-colors">عنّي</a>
                 <a href="#gallery" class="hover:text-premiumPurp px-3 py-2 transition-colors">معرض الأعمال</a>
@@ -193,19 +241,19 @@
 
             <!-- زر التواصل وقائمة الجوال -->
             <div class="flex items-center gap-3">
-                <a href="#contact" class="magnetic bg-gradient-to-r from-premiumPurp to-premiumIndigo text-white text-xs md:text-sm font-bold px-4 md:px-6 py-2 rounded-full shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all duration-300 whitespace-nowrap">
+                <a href="#contact" class="cta-small magnetic bg-gradient-to-r from-premiumPurp to-premiumIndigo text-white text-xs md:text-sm font-bold px-4 md:px-6 py-2 rounded-full shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all duration-300 whitespace-nowrap">
                     ابدأ مشروعك
                 </a>
                 
                 <!-- زر التحكم بقائمة الهواتف المحمولة -->
-                <button id="mobileMenuTrigger" class="lg:hidden text-white hover:text-premiumPurp transition-colors p-2 focus:outline-none" aria-label="Toggle mobile menu">
+                <button id="mobileMenuTrigger" class="xl:hidden text-white hover:text-premiumPurp transition-colors p-2 focus:outline-none" aria-label="Toggle mobile menu">
                     <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
                 </button>
             </div>
         </div>
 
         <!-- القائمة المنسدلة للهواتف والتابلت -->
-        <div id="mobileMenu" class="hidden lg:hidden flex flex-col space-y-3 pt-4 pb-2 border-t border-white/5 mt-3 text-sm font-medium transition-all duration-300">
+        <div id="mobileMenu" class="hidden xl:hidden flex flex-col space-y-3 pt-4 pb-2 border-t border-white/5 mt-3 text-sm font-medium transition-all duration-300">
             <a href="#hero" class="mobile-link hover:text-premiumPurp py-1 transition-colors">الرئيسية</a>
             <a href="#about" class="mobile-link hover:text-premiumPurp py-1 transition-colors">عنّي</a>
             <a href="#gallery" class="mobile-link hover:text-premiumPurp py-1 transition-colors">معرض الأعمال</a>
@@ -219,14 +267,14 @@
     <main class="pt-24">
         
         <!-- الصفحة 1: الواجهة الرئيسية (Hero Section) -->
-        <section id="hero" class="min-h-screen flex flex-col justify-center items-center px-4 md:px-6 relative overflow-hidden">
+        <section id="hero" class="hero-min-h flex flex-col justify-center items-center px-4 md:px-6 relative overflow-hidden">
             <div class="text-center z-10 max-w-4xl flex flex-col items-center justify-center">
                 <span class="inline-block glass-card text-xs md:text-sm text-premiumPurp font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest border border-purple-500/20">
                     <i class="fa-solid fa-wand-magic-sparkles ml-1"></i> سينماتية الحركة والمونتاج
                 </span>
                 
-                <h1 class="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight tracking-tight hero-glow-text">
-                    Don’t just tell your story.<br class="hidden md:inline">
+                <h1 dir="ltr" class="hero-title font-black mb-6 tracking-tight hero-glow-text">
+                    Don’t just tell your story.<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-premiumPurp via-indigo-400 to-premiumIndigo">
                         Make it move.
                     </span>
@@ -240,8 +288,8 @@
                 <div class="w-full flex justify-center items-center">
                     <button id="heroCTA" class="magnetic relative px-10 py-5 bg-gradient-to-r from-premiumPurp to-premiumIndigo rounded-2xl font-bold shadow-lg shadow-purple-500/30 hover:scale-105 transition-all duration-300 overflow-hidden flex flex-col items-center justify-center gap-1 group">
                         <span class="text-gray-300 text-xs tracking-wider uppercase font-bold font-cairo">مين هو</span>
-                        <span class="text-xl sm:text-2xl md:text-3xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-white hero-name-glow">
-                            omar el desoky
+                        <span class="whitespace-nowrap text-lg sm:text-2xl md:text-3xl font-black tracking-wider sm:tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-white hero-name-glow" dir="ltr">
+                            OMAR EL-DESOUKI
                         </span>
                         <!-- تأثير لمعان مائل يتحرك عند وقوف الماوس -->
                         <div class="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 translate-x-[-150%] group-hover:translate-x-[250%] transition-transform duration-1000 ease-in-out"></div>
@@ -251,7 +299,7 @@
         </section>
 
         <!-- الصفحة 2: من أنا والخبرات (About & Expertise) -->
-        <section id="about" class="py-32 px-4 md:px-6 max-w-7xl mx-auto relative">
+        <section id="about" class="py-20 md:py-32 px-4 md:px-6 max-w-7xl mx-auto relative">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
                 <!-- صورة عمر الشخصية الطولية -->
@@ -261,7 +309,7 @@
                         <!-- إطار الصورة الطولي المضيء -->
                         <div class="absolute inset-0 glass-card animated-glow-border rounded-3xl p-3 flex items-center justify-center overflow-hidden z-10">
                             <div class="w-full h-full rounded-2xl bg-darkBg border border-white/5 relative overflow-hidden">
-                                <img src="p1.jpg" alt="Omar El-Desouki" class="w-full h-full object-cover rounded-xl">
+                                <img src="p1.webp" alt="Omar El-Desouki" width="600" height="750" loading="lazy" decoding="async" class="w-full h-full object-cover rounded-xl">
                                 <div class="absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 animate-pulse"></div>
                             </div>
                         </div>
@@ -274,7 +322,7 @@
                         <span class="text-premiumPurp text-xs sm:text-sm font-bold uppercase tracking-wider block mb-2">// خلف العدسة والتحريك الشغوف</span>
                         <h2 class="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-4">OMAR EL-DESOUKI</h2>
                         <p class="text-gray-300 leading-relaxed text-sm sm:text-base md:text-lg">
-                            محرر ومصمم حركة محترف، أهتم بدراسة فيزياء وعلم التحريك لخلق مقاطع بصرية آسرة ذات طابع فيزيائي ارتدائي ممتع. متخصص في المونتاج السينمائي، تصحيح الألوان، وتصميم المؤثرات البصرية التي تجعل قصتك تترك انطباعاً حقيقياً في عقل وقلب المشاهد.
+                            محرر ومصمم حركة محترف، أهتم بدراسة فيزياء وعلم التحريك لخلق مقاطع بصرية آسرة ذات طابع فيزيائي ارتدادي ممتع. متخصص في المونتاج السينمائي، تصحيح الألوان، وتصميم المؤثرات البصرية التي تجعل قصتك تترك انطباعاً حقيقياً في عقل وقلب المشاهد.
                         </p>
                     </div>
 
@@ -331,21 +379,18 @@
         </section>
 
         <!-- الصفحة 3: معرض أعمال omar el desoky (فيديوهات مخفضة ومحسنة مع دمج المسارات) -->
-        <section id="gallery" class="py-32 px-4 md:px-6 bg-black/40 overflow-hidden relative">
+        <section id="gallery" class="py-20 md:py-32 px-4 md:px-6 bg-black/40 overflow-hidden relative">
             <div class="max-w-7xl mx-auto text-center mb-16">
                 <span class="text-premiumPurp text-sm font-bold uppercase tracking-wider block mb-2">// العرض التفاعلي والانسيابي</span>
-                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black uppercase">جزء من أعمال omar el desoky</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-black uppercase">جزء من أعمال <span dir="ltr" class="whitespace-nowrap">OMAR EL-DESOUKI</span></h2>
                 <p class="text-gray-400 max-w-xl mx-auto mt-4 text-xs sm:text-sm md:text-base">
                     مسارات منزلقة منتظمة للفيديوهات جاهزة للعرض. قف على أي فيديو لتفعيل الصوت مباشرة وخفض موسيقى الموقع ببطء، دون توقف المشهد نهائياً.
                 </p>
 
                 <!-- أزرار التصفية والفرز للتنقل من الدوار للمسطح (تم دمج الطبي في التسويق) -->
-                <div class="flex flex-wrap gap-2 justify-center mt-8 inline-flex glass-card p-2 rounded-2xl border border-white/5">
-                    <button class="filter-btn active px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-premiumPurp text-white" data-filter="all">الكل (المسارات المتحركة)</button>
-                    <button class="filter-btn px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-400 hover:text-white" data-filter="marketing">التسويق</button>
-                    <button class="filter-btn px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-400 hover:text-white" data-filter="motion">motion</button>
-                    <button class="filter-btn px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-400 hover:text-white" data-filter="products">المنتجات</button>
-                    <button class="filter-btn px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-400 hover:text-white" data-filter="edu">التعليمي</button>
+                <!-- أزرار الأقسام بتتعمل تلقائي من فولدرات "فيديوهات الموقع" (videos.js) -->
+                <div id="filterBar" class="flex flex-wrap gap-2 justify-center mt-8 inline-flex glass-card p-2 rounded-2xl border border-white/5">
+                    <button class="filter-btn active px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-premiumPurp text-white" data-filter="all">الكل</button>
                 </div>
             </div>
 
@@ -354,212 +399,14 @@
                 <!-- المسار الأول (يتحرك لليمين تلقائياً) -->
                 <div class="marquee-container py-12" id="marqueeContainer1">
                     <div class="marquee-track" id="track1">
-                        <!-- فيديو t3 (تسويق) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="marketing">
-                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="t3-poster.webp">
-                                    <source src="t3.webm" type="video/webm">
-                                    <source src="t3.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-premiumPurp">التسويق</span>
-                            </div>
-                        </div>
-                        <!-- فيديو m1 (motion) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="motion">
-                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="m1-poster.webp">
-                                    <source src="m1.webm" type="video/webm">
-                                    <source src="m1.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-indigo-400">Motion</span>
-                            </div>
-                        </div>
-                        <!-- فيديو a1 (التعليمي) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="edu">
-                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="a1-poster.webp">
-                                    <source src="a1.webm" type="video/webm">
-                                    <source src="a1.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-yellow-400">التعليمي</span>
-                            </div>
-                        </div>
-                        <!-- فيديو d1 (دمج في التسويق) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="marketing">
-                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="d1-poster.webp">
-                                    <source src="d1.webm" type="video/webm">
-                                    <source src="d1.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-premiumPurp">التسويق</span>
-                            </div>
-                        </div>
-                        <!-- فيديو t2 (تسويق) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="marketing">
-                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="t2-poster.webp">
-                                    <source src="t2.webm" type="video/webm">
-                                    <source src="t2.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-premiumPurp">التسويق</span>
-                            </div>
-                        </div>
-                        <!-- فيديو m2 (motion) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="motion">
-                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="m2-poster.webp">
-                                    <source src="m2.webm" type="video/webm">
-                                    <source src="m2.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-indigo-400">Motion</span>
-                            </div>
-                        </div>
-                        <!-- فيديو v5 (منتجات) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="products">
-                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="v5-poster.webp">
-                                    <source src="v5.webm" type="video/webm">
-                                    <source src="v5.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-teal-400">منتجات</span>
-                            </div>
-                        </div>
-                        <!-- فيديو a2 (التعليمي) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="edu">
-                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="a2-poster.webp">
-                                    <source src="a2.webm" type="video/webm">
-                                    <source src="a2.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-yellow-400">التعليمي</span>
-                            </div>
-                        </div>
-                        <!-- فيديو v6 (منتجات) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="products">
-                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="v6-poster.webp">
-                                    <source src="v6.webm" type="video/webm">
-                                    <source src="v6.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-teal-400">منتجات</span>
-                            </div>
-                        </div>
-                        <!-- فيديو m3 (motion) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="motion">
-                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="m3-poster.webp">
-                                    <source src="m3.webm" type="video/webm">
-                                    <source src="m3.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-indigo-400">Motion</span>
-                            </div>
-                        </div>
+                        <!-- الكروت بتتبني تلقائي من videos.js -->
                     </div>
                 </div>
 
                 <!-- المسار الثاني (يتحرك لليسار تلقائياً) -->
                 <div class="marquee-container py-12" id="marqueeContainer2">
                     <div class="marquee-track" id="track2">
-                        <!-- فيديو t22 (تسويق) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="marketing">
-                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="t22-poster.webp">
-                                    <source src="t22.webm" type="video/webm">
-                                    <source src="t22.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-premiumPurp">التسويق</span>
-                            </div>
-                        </div>
-                        <!-- فيديو m4 (motion) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="motion">
-                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="m4-poster.webp">
-                                    <source src="m4.webm" type="video/webm">
-                                    <source src="m4.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-indigo-400">Motion</span>
-                            </div>
-                        </div>
-                        <!-- فيديو v9 (منتجات) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="products">
-                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="v9-poster.webp">
-                                    <source src="v9.webm" type="video/webm">
-                                    <source src="v9.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-teal-400">منتجات</span>
-                            </div>
-                        </div>
-                        <!-- فيديو a3 (التعليمي) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="edu">
-                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="a3-poster.webp">
-                                    <source src="a3.webm" type="video/webm">
-                                    <source src="a3.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-yellow-400">التعليمي</span>
-                            </div>
-                        </div>
-                        <!-- فيديو d2 (دمج في التسويق) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="marketing">
-                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="d2-poster.webp">
-                                    <source src="d2.webm" type="video/webm">
-                                    <source src="d2.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-premiumPurp">التسويق</span>
-                            </div>
-                        </div>
-                        <!-- فيديو t17 (تسويق) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="marketing">
-                            <div class="w-full h-full bg-purple-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="t17-poster.webp">
-                                    <source src="t17.webm" type="video/webm">
-                                    <source src="t17.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-premiumPurp">التسويق</span>
-                            </div>
-                        </div>
-                        <!-- فيديو m5 (motion) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="motion">
-                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="m5-poster.webp">
-                                    <source src="m5.webm" type="video/webm">
-                                    <source src="m5.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-indigo-400">Motion</span>
-                            </div>
-                        </div>
-                        <!-- فيديو v14 (منتجات) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="products">
-                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="v14-poster.webp">
-                                    <source src="v14.webm" type="video/webm">
-                                    <source src="v14.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-teal-400">منتجات</span>
-                            </div>
-                        </div>
-                        <!-- فيديو v20 (منتجات) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="products">
-                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="v20-poster.webp">
-                                    <source src="v20.webm" type="video/webm">
-                                    <source src="v20.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-teal-400">منتجات</span>
-                            </div>
-                        </div>
-                        <!-- فيديو v2 (منتجات) -->
-                        <div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="products">
-                            <div class="w-full h-full bg-indigo-900/10 rounded-xl relative overflow-hidden">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="metadata" poster="v2-poster.webp">
-                                    <source src="v2.webm" type="video/webm">
-                                    <source src="v2.mp4" type="video/mp4">
-                                </video>
-                                <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold text-teal-400">منتجات</span>
-                            </div>
-                        </div>
+                        <!-- الكروت بتتبني تلقائي من videos.js -->
                     </div>
                 </div>
             </div>
@@ -571,7 +418,7 @@
         </section>
 
         <!-- الصفحة 4: بعض من العملاء (Testimonials) -->
-        <section id="testimonials" class="py-32 px-4 md:px-6 max-w-7xl mx-auto relative">
+        <section id="testimonials" class="py-20 md:py-32 px-4 md:px-6 max-w-7xl mx-auto relative">
             <div class="text-center mb-16">
                 <span class="text-premiumPurp text-xs sm:text-sm font-bold uppercase tracking-wider block mb-2">// بعض من العملاء</span>
                 <h2 class="text-2xl sm:text-3xl md:text-5xl font-black">بعض من العملاء</h2>
@@ -679,7 +526,7 @@
         </section>
 
         <!-- الصفحة 5: مقارنة قبل وبعد التفاعلية (Before/After Reels Video Slider) -->
-        <section id="before-after" class="py-32 px-4 md:px-6 bg-black/30 relative">
+        <section id="before-after" class="py-20 md:py-32 px-4 md:px-6 bg-black/30 relative">
             <div class="max-w-4xl mx-auto text-center mb-16">
                 <span class="text-premiumPurp text-sm font-bold uppercase tracking-wider block mb-2">// لمسات المونتاج السحرية</span>
                 <h2 class="text-2xl sm:text-3xl md:text-5xl font-black">مقارنة بين قبل وبعد المونتاج</h2>
@@ -687,12 +534,11 @@
             </div>
 
             <!-- هيكل المنزلق بمقاس الريلز الطولي (9:16) مدمج بالفيديوهات الحقيقية المزدوجة q1 و a1 -->
-            <div class="max-w-[340px] aspect-[9/16] mx-auto relative rounded-3xl overflow-hidden glass-card p-1 select-none slider-img-container" id="sliderContainer">
+            <div class="w-full max-w-[340px] aspect-[9/16] mx-auto relative rounded-3xl overflow-hidden glass-card p-1 select-none slider-img-container" id="sliderContainer">
                 
                 <!-- بعد التعديل والتلوين (النسخة النهائية الملونة - الطبقة السفلية بالكامل) -->
                 <div class="absolute inset-1 rounded-2xl overflow-hidden">
-                    <video id="afterVideo" class="w-full h-full object-cover" loop muted playsinline autoplay preload="metadata" poster="a1-poster.webp">
-                        <source src="a1.webm" type="video/webm">
+                    <video id="afterVideo" class="w-full h-full object-cover" loop muted playsinline preload="none" poster="a1-poster.webp">
                         <source src="a1.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -700,8 +546,7 @@
                 <!-- قبل التعديل والتلوين (المادة الخام - الطبقة العلوية المقصوصة ديناميكياً) -->
                 <div class="absolute inset-1 rounded-2xl overflow-hidden z-10 w-1/2" id="beforeLayer">
                     <!-- تم تفعيل أبعاد ثابتة لمنع انضغاط أو تشوه الفيديو قبل القص -->
-                    <video id="beforeVideo" class="h-full object-cover max-w-none" loop muted playsinline autoplay style="width: 332px;" preload="metadata" poster="q1-poster.webp">
-                        <source src="q1.webm" type="video/webm">
+                    <video id="beforeVideo" class="h-full object-cover max-w-none" loop muted playsinline style="width: 332px;" preload="none" poster="q1-poster.webp">
                         <source src="q1.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -714,7 +559,7 @@
         </section>
 
         <!-- الصفحة 6: خطة وطريقة العمل (Workflow Timeline) -->
-        <section id="workflow" class="py-32 px-4 md:px-6 max-w-5xl mx-auto relative">
+        <section id="workflow" class="py-20 md:py-32 px-4 md:px-6 max-w-5xl mx-auto relative">
             <div class="text-center mb-24">
                 <span class="text-premiumPurp text-xs sm:text-sm font-bold uppercase tracking-wider block mb-2">// كيف نصل إلى النتيجة المطلوبة؟</span>
                 <h2 class="text-2xl sm:text-3xl md:text-5xl font-black">خطوات العمل المنظمة</h2>
@@ -796,10 +641,10 @@
         </section>
 
         <!-- الصفحة 7: طرق التواصل (Contact Footer) -->
-        <section id="contact" class="py-32 px-4 md:px-6 bg-black/50 border-t border-white/5 relative">
+        <section id="contact" class="py-20 md:py-32 px-4 md:px-6 bg-black/50 border-t border-white/5 relative">
             <div class="max-w-4xl mx-auto text-center">
                 <span class="inline-block text-premiumPurp text-xs font-bold tracking-widest px-4 py-2 rounded-full glass-card mb-6 border-purple-500/20 uppercase">دعنا نتعاون</span>
-                <h2 class="text-3xl md:text-6xl font-black mb-8">هل مشروعك القادم جاهز ليتحرك؟</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-6xl font-black mb-8 leading-snug">هل مشروعك القادم جاهز ليتحرك؟</h2>
                 <p class="text-gray-300 text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-12">
                     تواصل مباشرة، لنبدأ في تحويل أفكارك ورؤيتك لقصة بصرية ساحرة لا تُمحى من ذاكرة المشاهدين.
                 </p>
@@ -828,8 +673,8 @@
     </main>
 
     <!-- زر التحكم العائم بالموسيقى السينمائية للخلفية -->
-    <div class="fixed bottom-6 left-6 z-50">
-        <button id="musicToggleBtn" class="w-12 h-12 rounded-full bg-premiumPurp flex items-center justify-center text-white shadow-lg shadow-purple-500/30 hover:scale-110 transition-all duration-300 relative">
+    <div class="fixed safe-fab z-50">
+        <button id="musicToggleBtn" aria-label="تشغيل/كتم الموسيقى" class="w-12 h-12 rounded-full bg-premiumPurp flex items-center justify-center text-white shadow-lg shadow-purple-500/30 hover:scale-110 transition-all duration-300 relative">
             <i class="fa-solid fa-volume-high text-lg" id="musicIcon"></i>
             <span class="absolute right-14 bg-black/80 text-xs px-3 py-1.5 rounded-lg whitespace-nowrap text-white font-bold opacity-0 transition-opacity" id="musicTooltip">كتم موسيقى الخلفية السينمائية</span>
         </button>
@@ -838,6 +683,10 @@
     <!-- مكتبة GSAP و ScrollTrigger لتطبيق حركات علم التحريك والارتداد الفيزيائي -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- قائمة الفيديوهات (عدّلها من videos.js) -->
+    <script src="videos.js"></script>
+    <!-- كلاسات بتستخدمها كروت الفيديو (عشان ملف الـ CSS يفضل فيه) -->
+    <div class="hidden w-[220px] aspect-[9/16] flex-shrink-0 bg-purple-900/10 bg-indigo-900/10 text-premiumPurp text-indigo-400 text-teal-400 text-yellow-400 text-orange-400 text-pink-400 text-green-400 text-blue-400 text-[10px] px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all hover:text-white bg-black/70 bottom-4 right-4 rounded-md rounded-xl object-cover"></div>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
@@ -1071,9 +920,71 @@
             );
         });
 
-        // 5. بناء مسارات الدوران الأفقي اللانهائية ومضاعفة الكروت لمنع أي فراغات نهائياً
+        // 5. بناء كروت الفيديو من القائمة في videos.js
+        //    الشريط بيعرض معاينة صغيرة (name-preview.mp4) والفيديو الكامل بيتحمّل بس لما حد يدوس/يقف عليه
         const track1 = document.getElementById('track1');
         const track2 = document.getElementById('track2');
+        // الأقسام جاية من videos.js (كل فولدر = قسم). الألوان: ثابتة للأقسام الأساسية، والجديدة بتاخد لون من القائمة
+        const KNOWN_COLORS = {
+            marketing: { color: 'text-premiumPurp', bg: 'bg-purple-900/10' },
+            motion:    { color: 'text-indigo-400',  bg: 'bg-indigo-900/10' },
+            products:  { color: 'text-teal-400',    bg: 'bg-indigo-900/10' },
+            edu:       { color: 'text-yellow-400',  bg: 'bg-purple-900/10' }
+        };
+        const EXTRA_COLORS = ['text-orange-400', 'text-pink-400', 'text-green-400', 'text-blue-400'];
+        const CATS = {};
+        (window.PORTFOLIO_CATEGORIES || []).forEach((c, i) => {
+            const known = KNOWN_COLORS[c.id];
+            CATS[c.id] = {
+                label: c.label,
+                color: known ? known.color : EXTRA_COLORS[i % EXTRA_COLORS.length],
+                bg: known ? known.bg : 'bg-purple-900/10'
+            };
+        });
+        // زرار لكل قسم
+        const filterBar = document.getElementById('filterBar');
+        Object.keys(CATS).forEach(id => {
+            const b = document.createElement('button');
+            b.className = 'filter-btn px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all text-gray-400 hover:text-white';
+            b.dataset.filter = id;
+            b.textContent = CATS[id].label;
+            filterBar.appendChild(b);
+        });
+        const cardHTML = (v) => {
+            const c = CATS[v.category] || { label: v.category, color: 'text-premiumPurp', bg: 'bg-purple-900/10' };
+            return `<div class="w-[220px] aspect-[9/16] glass-card rounded-2xl overflow-hidden p-1 interactive-reel-card flex-shrink-0" data-category="${v.category}">
+                <div class="w-full h-full ${c.bg} rounded-xl relative overflow-hidden">
+                    <video class="w-full h-full object-cover" loop muted playsinline preload="none" poster="${v.file}-poster.webp"
+                        src="${v.file}-preview.mp4" data-preview="${v.file}-preview.mp4" data-full="${v.file}.mp4"></video>
+                    <span class="absolute bottom-4 right-4 text-[10px] bg-black/70 px-2 py-1 rounded-md font-bold ${c.color}">${c.label}</span>
+                </div>
+            </div>`;
+        };
+        const videoList = window.PORTFOLIO_VIDEOS || [];
+        const half = Math.ceil(videoList.length / 2);
+        track1.innerHTML = videoList.slice(0, half).map(cardHTML).join('');
+        track2.innerHTML = videoList.slice(half).map(cardHTML).join('');
+
+        // تشغيل الفيديو الكامل بالصوت / الرجوع للمعاينة
+        const playFull = (video) => {
+            if (video.dataset.mode !== 'full') {
+                video.dataset.mode = 'full';
+                video.preload = 'auto';
+                video.src = video.dataset.full;
+            } else {
+                video.currentTime = 0;
+            }
+            video.muted = false;
+            video.play().catch(() => {});
+        };
+        const backToPreview = (video) => {
+            video.muted = true;
+            if (video.dataset.mode === 'full') {
+                video.dataset.mode = 'preview';
+                video.src = video.dataset.preview;
+                video.play().catch(() => {});
+            }
+        };
 
         // التقاط كروت الفيديوهات الفريدة قبل مضاعفتها لتجنب تكرار الكروت عند الفلترة
         const originalUniqueCards = Array.from(document.querySelectorAll('.interactive-reel-card'));
@@ -1084,12 +995,18 @@
         const originalContent1 = track1.innerHTML;
         const originalContent2 = track2.innerHTML;
 
-        track1.innerHTML = originalContent1 + originalContent1 + originalContent1 + originalContent1;
-        track2.innerHTML = originalContent2 + originalContent2 + originalContent2 + originalContent2;
+        // عدد النسخ يتحسب حسب عدد الفيديوهات وعرض الشاشة (عشان مايبقاش فيه فراغ لو الفيديوهات قليلة)
+        const copiesFor = (count) => count ? Math.max(2, Math.ceil((Math.max(window.innerWidth, 1920) * 1.2) / (count * 140)) + 1) : 0;
+        track1.innerHTML = originalContent1.repeat(copiesFor(originalCount1));
+        track2.innerHTML = originalContent2.repeat(copiesFor(originalCount2));
 
         let tweenTrack1, tweenTrack2;
 
         const initMarqueeAnimations = () => {
+            if (tweenTrack1) tweenTrack1.kill();
+            if (tweenTrack2) tweenTrack2.kill();
+            gsap.set([track1, track2], { x: 0 });
+            if (!originalCount1 || !originalCount2) return;
             const singleSetWidth1 = track1.children[originalCount1].offsetLeft - track1.children[0].offsetLeft;
             const singleSetWidth2 = track2.children[originalCount2].offsetLeft - track2.children[0].offsetLeft;
 
@@ -1112,6 +1029,19 @@
         };
 
         window.addEventListener('load', initMarqueeAnimations);
+
+        // إعادة حساب المسارات عند تغيير المقاس أو لف الموبايل
+        let resizeTimer, lastWidth = window.innerWidth;
+        window.addEventListener('resize', () => {
+            if (window.innerWidth === lastWidth) return; // تجاهل تغيّر الارتفاع بسبب شريط المتصفح
+            lastWidth = window.innerWidth;
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                const paused = tweenTrack1 && tweenTrack1.paused();
+                initMarqueeAnimations();
+                if (paused) { tweenTrack1.pause(); tweenTrack2.pause(); }
+            }, 250);
+        });
 
         let activeHoveredVideo = null;
 
@@ -1136,9 +1066,7 @@
                     });
 
                     if (video) {
-                        video.currentTime = 0; // تصفير وإعادة تشغيل الفيديو من البداية عند معاودته
-                        video.muted = false;
-                        video.play().catch(()=>{});
+                        playFull(video); // تحميل الفيديو الكامل بالصوت
                         activeHoveredVideo = video;
 
                         if (!bgMusic.paused) {
@@ -1161,7 +1089,7 @@
                     });
 
                     if (video) {
-                        video.muted = true;
+                        backToPreview(video);
                         activeHoveredVideo = null;
                         
                         if (!bgMusic.paused) {
@@ -1220,17 +1148,17 @@
 
                         const clonedVideo = clone.querySelector('video');
                         if (clonedVideo) {
+                            clonedVideo.dataset.mode = 'preview';
+                            clonedVideo.src = clonedVideo.dataset.preview;
                             clonedVideo.muted = true;
-                            clonedVideo.preload = "metadata";
+                            clonedVideo.preload = "auto";
                             clonedVideo.play().catch(() => {});
                         }
 
                         clone.addEventListener('mouseenter', () => {
                             gsap.to(clone, { scale: 1.08, ease: "back.out(2.2)", duration: 0.3 });
                             if (clonedVideo) {
-                                clonedVideo.currentTime = 0; // إعادة التشغيل من الصفر عند الوقوف عليه في الفلتر
-                                clonedVideo.muted = false;
-                                clonedVideo.play().catch(()=>{});
+                                playFull(clonedVideo);
                                 activeHoveredVideo = clonedVideo;
                                 if (!bgMusic.paused) {
                                     gsap.to(bgMusic, { volume: 0, duration: 0.8, ease: "power1.out" });
@@ -1240,7 +1168,7 @@
                         clone.addEventListener('mouseleave', () => {
                             gsap.to(clone, { scale: 1, duration: 0.3 });
                             if (clonedVideo) {
-                                clonedVideo.muted = true;
+                                backToPreview(clonedVideo);
                                 activeHoveredVideo = null;
                                 if (!bgMusic.paused) {
                                     gsap.to(bgMusic, { volume: originalMusicVolume, duration: 0.8, ease: "power1.out" });
@@ -1290,6 +1218,7 @@
 
         // تزامن كامل بين الفيديوهات q1 و a1
         const playAndSyncVideos = () => {
+            syncVideoSize();
             beforeVideo.play().catch(e => console.log(e));
             afterVideo.play().catch(e => console.log(e));
             beforeVideo.currentTime = afterVideo.currentTime;
@@ -1302,6 +1231,7 @@
 
         // مراقبة مستمرة لفرق الإطارات وحل تفاوت التشغيل
         setInterval(() => {
+            if (afterVideo.paused) return; // ما نعملش حاجة والسلايدر مش ظاهر
             if (Math.abs(afterVideo.currentTime - beforeVideo.currentTime) > 0.15) {
                 beforeVideo.currentTime = afterVideo.currentTime;
             }
@@ -1333,7 +1263,9 @@
             },
             onEnterBack: () => {
                 playAndSyncVideos();
-            }
+            },
+            onLeave: () => { afterVideo.pause(); beforeVideo.pause(); },
+            onLeaveBack: () => { afterVideo.pause(); beforeVideo.pause(); }
         });
 
         // حركة السحب بالمنزلق
@@ -1350,19 +1282,17 @@
             gsap.to(handle, { left: `${percentage}%`, duration: 0.1 });
         };
 
+        // السحب يشتغل من أي مكان في الفيديو (ماوس + لمس + قلم)
         let isDragging = false;
-        handle.addEventListener('mousedown', () => isDragging = true);
-        window.addEventListener('mouseup', () => isDragging = false);
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
+        slider.addEventListener('pointerdown', (e) => {
+            isDragging = true;
             updateSlider(e.clientX);
         });
-
-        handle.addEventListener('touchstart', () => isDragging = true);
-        window.addEventListener('touchend', () => isDragging = false);
-        window.addEventListener('touchmove', (e) => {
+        window.addEventListener('pointerup', () => isDragging = false);
+        window.addEventListener('pointercancel', () => isDragging = false);
+        window.addEventListener('pointermove', (e) => {
             if (!isDragging) return;
-            updateSlider(e.touches[0].clientX);
+            updateSlider(e.clientX);
         });
 
         // 7. مؤشرات خطوات العمل (Workflow Timeline)
@@ -1424,21 +1354,21 @@
         });
 
         // 9. تقنية Intersection Observer لإيقاف تشغيل الفيديوهات البعيدة وتصفير الفيديوهات من البداية عند ظهورها مجدداً
+        // - الفيديو بيكمل من مكانه (من غير ما يرجع للصفر ويعيد التحميل)
+        // - بيبدأ يحمّل قبل ما توصله بشوية (300px) عشان يبقى جاهز
+        // - في الموبايل بس الفيديوهات اللي فعلاً على الشاشة هي اللي بتشتغل
+        const isSmallScreen = window.matchMedia('(max-width: 1024px), (hover: none)').matches;
         const videoObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const video = entry.target;
                 if (entry.isIntersecting) {
-                    // تصفير الفيديو وإعادة تشغيله من الصفر عند ظهوره على الشاشة مجدداً لضمان التزامن
-                    video.currentTime = 0;
-                    video.play().catch(err => {
-                        console.log("Video autoplay prevented until first gesture.");
-                    });
-                } else {
-                    // إيقاف تشغيل الفيديو مؤقتاً عند خروجه لتوفير طاقة كارت الشاشة والإنترنت
+                    if (video.preload === 'none') video.preload = 'auto';
+                    if (video.paused) video.play().catch(() => {});
+                } else if (!video.paused) {
                     video.pause();
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: isSmallScreen ? 0.35 : 0.1, rootMargin: isSmallScreen ? '300px 0px' : '300px 150px' });
 
         // تفعيل المراقبة لجميع فيديوهات كروت المعرض (ما عدا السلايدر التفاعلي قبل وبعد لتفادي تعارض التزامن)
         document.querySelectorAll('video:not(#beforeVideo):not(#afterVideo)').forEach(video => {
